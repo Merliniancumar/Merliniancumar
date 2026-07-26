@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merlín Ian Cumar Vinci — Full Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0b0d12;
+    --panel: #12151c;
+    --border: #232733;
+    --text: #cdd3e0;
+    --text-dim: #6b7280;
+    --blue: #6ea8fe;
+    --green: #7ee787;
+    --amber: #e3b341;
+    --violet: #b992f7;
+    --prompt: #7ee787;
+    --font: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: var(--blue); text-decoration: none; border-bottom: 1px solid transparent; }
+  a:hover{ border-bottom-color: var(--blue); }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--blue); outline-offset:3px; }
+
+  ::selection{ background: var(--blue); color: #0b0d12; }
+
+  .wrap{ max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---- nav ---- */
+  nav{
+    border-bottom: 1px solid var(--border);
+    background: rgba(11,13,18,0.9);
+    backdrop-filter: blur(6px);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; padding: 14px 24px; }
+  .brand{ color: var(--text); font-size: 0.85rem; }
+  .brand .prompt{ color: var(--prompt); }
+  .navlinks{ display:flex; gap: 20px; list-style:none; }
+  .navlinks a{ color: var(--text-dim); font-size: 0.8rem; border-bottom:none; }
+  .navlinks a:hover{ color: var(--text); }
+  .navlinks a::before{ content: "./"; color: var(--text-dim); }
+
+  /* ---- hero / terminal ---- */
+  .hero{ padding: 76px 0 56px; }
+
+  .terminal{
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px -20px rgba(0,0,0,0.6);
+  }
+  .terminal-bar{
+    display:flex;
+    align-items:center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .terminal-bar span{ width:10px; height:10px; border-radius:50%; }
+  .terminal-bar span:nth-child(1){ background:#ff5f57; }
+  .terminal-bar span:nth-child(2){ background:#febc2e; }
+  .terminal-bar span:nth-child(3){ background:#28c840; }
+  .terminal-bar .path{ margin-left: 10px; font-size: 0.72rem; color: var(--text-dim); }
+
+  .terminal-body{ padding: 22px 24px 26px; min-height: 210px; }
+  .line{ white-space: pre-wrap; word-break: break-word; }
+  .line .prompt{ color: var(--prompt); }
+  .line .path-inline{ color: var(--violet); }
+  .line .output{ color: var(--text); }
+  .line .dim{ color: var(--text-dim); }
+  .cursor{
+    display:inline-block;
+    width: 8px;
+    height: 1em;
+    background: var(--text);
+    vertical-align: text-bottom;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .role-line{ margin-top: 22px; color: var(--amber); font-size: 0.95rem; }
+
+  /* ---- sections ---- */
+  section{ padding: 52px 0; border-top: 1px solid var(--border); }
+
+  .section-head{ display:flex; align-items:baseline; gap: 10px; margin-bottom: 24px; }
+  .section-head .num{ color: var(--text-dim); font-size: 0.8rem; }
+  .section-head h2{ font-size: 1rem; font-weight: 700; color: var(--text); text-transform: lowercase; }
+  .section-head h2::after{ content: "()"; color: var(--text-dim); }
+
+  p.body-text{ color: var(--text); max-width: 62ch; font-size: 0.95rem; }
+  p.body-text + p.body-text{ margin-top: 12px; }
+
+  .stack-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 6px; }
+  .stack-col .label{ color: var(--text-dim); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+  .stack-col ul{ list-style:none; }
+  .stack-col li{ font-size: 0.88rem; padding: 4px 0; color: var(--text); }
+  .stack-col li::before{ content: "▸ "; color: var(--blue); }
+
+  .card{
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 22px;
+    margin-bottom: 14px;
+  }
+  .card-head{ display:flex; align-items:center; justify-content:space-between; gap: 12px; }
+  .card h3{ font-size: 0.92rem; color: var(--text); }
+  .card .status{ font-size: 0.7rem; color: var(--text-dim); border: 1px solid var(--border); border-radius: 4px; padding: 2px 8px; }
+  .card p{ color: var(--text-dim); font-size: 0.85rem; margin-top: 8px; }
+  .card .tags{ margin-top: 10px; display:flex; gap: 8px; flex-wrap:wrap; }
+  .card .tags span{ font-size: 0.72rem; color: var(--text-dim); }
+  .card .tags span::before{ content: "#"; }
+
+  .contact-list{ display:flex; flex-direction: column; gap: 10px; }
+  .contact-list .row{ display:flex; gap: 14px; font-size: 0.92rem; }
+  .contact-list .key{ color: var(--text-dim); width: 84px; flex-shrink:0; }
+
+  footer{ padding: 30px 0 50px; color: var(--text-dim); font-size: 0.75rem; }
+  footer .prompt{ color: var(--prompt); }
+
+  @media (max-width: 640px){
+    .stack-grid{ grid-template-columns: 1fr; gap: 20px; }
+    .hero{ padding: 56px 0 40px; }
+    .navlinks{ gap: 14px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .cursor{ animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="prompt">~/</span>merlin-cumar-vinci</div>
+    <ul class="navlinks">
+      <li><a href="#about">about</a></li>
+      <li><a href="#stack">stack</a></li>
+      <li><a href="#projects">proyectos</a></li>
+      <li><a href="#contact">contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="hero" id="top">
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span></span><span></span><span></span>
+        <span class="path">bash — merlin@portfolio</span>
+      </div>
+      <div class="terminal-body" id="term-body" aria-label="Sesión de terminal con la presentación profesional">
+        <!-- filled by JS, static fallback below for no-JS / reduced motion -->
+        <noscript>
+          <div class="line"><span class="prompt">merlin@dev</span><span class="path-inline">:~$</span> whoami</div>
+          <div class="line output">Merlín Ian Cumar Vinci — Estudiante de Programación Full Stack</div>
+          <div class="line"><span class="prompt">merlin@dev</span><span class="path-inline">:~$</span> cat sede.txt</div>
+          <div class="line output">Tecnicatura Universitaria de Pregrado en Programación Full Stack</div>
+          <div class="line output">Sede regional Bernardo Houssay — Capilla del Monte, Córdoba, Argentina</div>
+        </noscript>
+      </div>
+    </div>
+    <p class="role-line">&gt; Full Stack Developer en formación · HTML · CSS · JS · Python · SQL</p>
+  </section>
+
+  <section id="about">
+    <div class="section-head"><span class="num">01</span><h2>about</h2></div>
+    <p class="body-text">
+      Soy Merlín Ian Cumar Vinci, estudiante de la Tecnicatura Universitaria de Pregrado
+      en Programación Full Stack en la sede regional Bernardo Houssay de Capilla del Monte,
+      Córdoba, Argentina.
+    </p>
+    <p class="body-text">
+      Me interesa el desarrollo de aplicaciones web completas, desde la interfaz que
+      interactúa con el usuario hasta la lógica de backend y el diseño de bases de datos
+      que sostienen el sistema. Actualmente estoy construyendo mi base técnica y sumando
+      proyectos a medida que avanzo en la carrera.
+    </p>
+  </section>
+
+  <section id="stack">
+    <div class="section-head"><span class="num">02</span><h2>stack</h2></div>
+    <div class="stack-grid">
+      <div class="stack-col">
+        <div class="label">Lenguajes</div>
+        <ul>
+          <li>HTML5</li>
+          <li>CSS3</li>
+          <li>JavaScript</li>
+          <li>Python</li>
+          <li>SQL</li>
+          <li>PostgreSQL</li>
+        </ul>
+      </div>
+      <div class="stack-col">
+        <div class="label">Herramientas</div>
+        <ul>
+          <li>Visual Studio Code</li>
+          <li>Git &amp; GitHub</li>
+          <li>GitHub Pages</li>
+          <li>PSeInt</li>
+        </ul>
+      </div>
+      <div class="stack-col">
+        <div class="label">Áreas de interés</div>
+        <ul>
+          <li>Desarrollo Full Stack</li>
+          <li>Frontend</li>
+          <li>Backend</li>
+        </ul>
+      </div>
+      <div class="stack-col">
+        <div class="label">&nbsp;</div>
+        <ul>
+          <li>Bases de datos</li>
+          <li>Diseño de interfaces (UI)</li>
+          <li>Aplicaciones web</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  </section>
+
+  <section id="contact">
+    <div class="section-head"><span class="num">04</span><h2>contact</h2></div>
+    <div class="contact-list">
+      <div class="row"><span class="key">email</span><a href="mailto:cumarvincimerlinian@gmail.com">cumarvincimerlinian@gmail.com</a></div>
+      <div class="row"><span class="key">linkedin</span><a href="https://www.linkedin.com/in/merl%C3%ADn-ian-cumar-vinci-883287391/" target="_blank" rel="noopener">/in/merlín-ian-cumar-vinci-883287391</a></div>
+      <div class="row"><span class="key">github</span><a href="https://github.com/TU-USUARIO-GITHUB" target="_blank" rel="noopener">github.com/TU-USUARIO-GITHUB</a></div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="prompt">merlin@dev</span>:~$ echo "gracias por pasar"
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var body = document.getElementById('term-body');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var script = [
+    { type: 'cmd', text: 'whoami' },
+    { type: 'out', text: 'Merlín Ian Cumar Vinci' },
+    { type: 'cmd', text: 'cat rol.txt' },
+    { type: 'out', text: 'Estudiante de Programación Full Stack' },
+    { type: 'cmd', text: 'cat sede.txt' },
+    { type: 'out', text: 'Tecnicatura Universitaria de Pregrado — Sede Bernardo Houssay' },
+    { type: 'out', text: 'Capilla del Monte, Córdoba, Argentina' }
+  ];
+
+  function renderStatic(){
+    body.innerHTML = '';
+    script.forEach(function(item){
+      var div = document.createElement('div');
+      div.className = 'line';
+      if(item.type === 'cmd'){
+        div.innerHTML = '<span class="prompt">merlin@dev</span><span class="path-inline">:~$</span> ' + item.text;
+      } else {
+        div.innerHTML = '<span class="output">' + item.text + '</span>';
+      }
+      body.appendChild(div);
+    });
+  }
+
+  if(reduce || !body){
+    renderStatic();
+    return;
+  }
+
+  var i = 0;
+  function typeLine(){
+    if(i >= script.length){
+      var cursorLine = document.createElement('div');
+      cursorLine.className = 'line';
+      cursorLine.innerHTML = '<span class="prompt">merlin@dev</span><span class="path-inline">:~$</span> <span class="cursor"></span>';
+      body.appendChild(cursorLine);
+      return;
+    }
+    var item = script[i];
+    var div = document.createElement('div');
+    div.className = 'line';
+    body.appendChild(div);
+
+    if(item.type === 'cmd'){
+      var prefix = '<span class="prompt">merlin@dev</span><span class="path-inline">:~$</span> ';
+      var text = item.text;
+      var pos = 0;
+      div.innerHTML = prefix;
+      var typer = setInterval(function(){
+        pos++;
+        div.innerHTML = prefix + text.slice(0, pos);
+        if(pos >= text.length){
+          clearInterval(typer);
+          i++;
+          setTimeout(typeLine, 180);
+        }
+      }, 28);
+    } else {
+      div.innerHTML = '<span class="output">' + item.text + '</span>';
+      i++;
+      setTimeout(typeLine, 220);
+    }
+  }
+  typeLine();
+})();
+</script>
+
+</body>
+</html>
