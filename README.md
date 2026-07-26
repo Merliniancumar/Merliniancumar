@@ -38,6 +38,7 @@ formación activa, consolidando fundamentos y sumando proyectos prácticos.
 |---|---|
 | Email | [cumarvincimerlinian@gmail.com](mailto:cumarvincimerlinian@gmail.com) |
 | LinkedIn | [/in/merlín-ian-cumar-vinci-883287391](https://www.linkedin.com/in/merl%C3%ADn-ian-cumar-vinci-883287391/) |
+| GitHub | 	github.com/Merliniancumar
 | Portfolio | *(agregar URL de GitHub Pages una vez publicado)* |
 
 ---
