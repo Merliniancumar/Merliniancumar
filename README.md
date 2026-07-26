@@ -30,12 +30,7 @@ formación activa, consolidando fundamentos y sumando proyectos prácticos.
 | SQL | | Diseño de interfaces (UI) |
 | PostgreSQL | | Aplicaciones web |
 
-## Proyectos
 
-<!-- Reemplazar con proyectos reales, formato sugerido: -->
-<!-- **[nombre-del-proyecto](link-al-repo)** — breve descripción de qué resuelve y qué tecnologías usa. -->
-
-- `nombre-del-proyecto` — *(pendiente: agregar primer proyecto con link al repositorio)*
 
 ## Contacto
 
