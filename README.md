@@ -31,14 +31,13 @@ formación activa, consolidando fundamentos y sumando proyectos prácticos.
 | PostgreSQL | | Aplicaciones web |
 
 
-
 ## Contacto
 
 | | |
 |---|---|
 | Email | [cumarvincimerlinian@gmail.com](mailto:cumarvincimerlinian@gmail.com) |
 | LinkedIn | [/in/merlín-ian-cumar-vinci-883287391](https://www.linkedin.com/in/merl%C3%ADn-ian-cumar-vinci-883287391/) |
-| GitHub | 	github.com/Merliniancumar
+| GitHub | [github.com/Merliniancumar](https://github.com/Merliniancumar) |
 | Portfolio | *(agregar URL de GitHub Pages una vez publicado)* |
 
 ---
